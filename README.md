@@ -1,4 +1,4 @@
-![Logo](logo.jpg | width=100)
+![Logo](logo.jpg)
 
 # DevOps-Java
 
