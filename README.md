@@ -8,8 +8,8 @@ Small tutorial for DevOps and Java
 # Steps
 
 1.Setting the production environment.
-	* [X][Virtual Box](http://www.virtualbox.org)
-	* [][Vagrant](https://www.vagrantup.com/downloads.html)
+	- [X][Virtual Box](http://www.virtualbox.org)
+	- [ ][Vagrant](https://www.vagrantup.com/downloads.html)
 
 
 
