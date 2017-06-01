@@ -18,12 +18,15 @@ Small tutorial for DevOps and Java
 ## MySQL
 
 * Remove anonymous account:
+
 	mysql -uroot -p -e "DELETE FROM mysql.user WHERE user=''; FLUSH PRIVILEGES"
 
 * Creates app user:
+
 	mysql -uroot -p -e "GRANT ALL PRIVILEGES ON loja_schema.* TO 'loja'@'%' IDENTIFIED BY 'lojasecret';"
 
 * Test new user:
+
 	mysql -u loja -p loja_schema -e "select database(), user()"
 
 
