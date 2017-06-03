@@ -29,6 +29,19 @@ Small tutorial for DevOps and Java
 
 	mysql -u loja -p loja_schema -e "select database(), user()"
 
+## COMMANDS
+
+* Start the VMs:
+	vagrant up
+
+* Shutdown the VMs:
+	vagrant halt
+
+* SSH
+	vagrant ssh <SERVER>
+	vagrant ssh db
+	vagrant ssh web
+
 
 
 ## [Book on Google Books](https://books.google.com.br/books?id=Cm2CCwAAQBAJ)
@@ -42,4 +55,16 @@ Small tutorial for DevOps and Java
 
 	see https://stackoverflow.com/questions/38636023/vagrant-not-supported-the-capability-change-host-name.
 
+
+* On first Maven build error:
+
+	Vagrantfile
+
+	config.vm.provider :virtualbox do |vb|
+	  vb.customize ["modifyvm", :id, "--memory", "1536"]
+	end
+
+	ssh
+
+	export MAVEN_OPTS=-Xmx1024m
 
