@@ -42,6 +42,23 @@ Small tutorial for DevOps and Java
 	vagrant ssh db
 	vagrant ssh web
 
+* Increase MAVEN memory BEFORE build
+
+	vagrant@web$ export MAVEN_OPTS=-Xmx1536m
+
+* Tomcat Folders
+
+	Config: /etc/default/tomcat7/
+
+	JAVA_OPTS="-Djava.awt.headless=true -Xmx1024M -XX:+UseConcMarkSweepGC"
+
+	Applications: /var/lib/tomcat7/webapps/
+
+* Tomcat Commands
+	Stop: sudo service tomcat7 stop
+	Restart: sudo service tomcat7 restart
+
+* [Application](http://192.168.33.12:8080/devopsnapratica/ )
 
 
 ## [Book on Google Books](https://books.google.com.br/books?id=Cm2CCwAAQBAJ)
