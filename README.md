@@ -61,6 +61,9 @@ Small tutorial for DevOps and Java
 * [Application](http://192.168.33.12:8080/devopsnapratica/ )
 
 
+* [Nagios Dashboard](http://192.168.33.14/nagios3/)
+
+
 ## [Book on Google Books](https://books.google.com.br/books?id=Cm2CCwAAQBAJ)
 
 ## PROBLEMS
