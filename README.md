@@ -1,6 +1,11 @@
-![Logo](logo.jpg)
+<h1 align="center">
+	<br><img src="logo.jpg" alt="logo"><br>
 
-# DevOps-Java
+	DevOps-Java
+</h1>
+
+
+#
 
 Small tutorial for DevOps and Java
 
