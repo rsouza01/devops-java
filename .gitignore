@@ -13,6 +13,9 @@ boxes/*
 /website/build
 /vagrant-spec.config.rb
 
+
+*.war
+
 # Bundler/Rubygems
 *.gem
 .bundle
