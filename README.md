@@ -61,6 +61,7 @@ Small tutorial for DevOps and Java
 
 * Tomcat Commands
 	Stop: sudo service tomcat7 stop
+
 	Restart: sudo service tomcat7 restart
 
 * [Application](http://192.168.33.12:8080/devopsnapratica/ )
