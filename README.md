@@ -37,12 +37,24 @@ Small tutorial for DevOps and Java
 ## COMMANDS
 
 * Start the VMs:
+
 	vagrant up
+	vagrant up <SERVER>
 
 * Shutdown the VMs:
+
 	vagrant halt
 
+* Destroy VMs:
+
+	vagrant destroy <SERVER>
+
+* Change VM's after running:
+
+	vagrant provision <SERVER>
+
 * SSH
+
 	vagrant ssh <SERVER>
 	vagrant ssh db
 	vagrant ssh web

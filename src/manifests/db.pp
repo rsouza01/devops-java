@@ -1,47 +1,24 @@
-exec { "apt-update":
-	command => "/usr/bin/apt-get update"
-}
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+#
+# db.pp - Database server configuation
+#
+#
+# Author: 	Rodrigo Alvares de Souza
+# 			rsouza01@gmail.com
+#
+#
+# History:
+# Version 0.1: 2017/06/08 (rsouza) - First version.
+# Version 0.2: 2017/06/16 (rsouza) - Creating classes
+# Version 0.3: 2017/06/16 (rsouza) - Using modules
+#
+#
 
-package { "mysql-server":
-	ensure => installed,
-	require => Exec["apt-update"],
-}
+include mysql::server
 
-file { "/etc/mysql/conf.d/allow_external.cnf":
-	owner => mysql,
-	group => mysql,
-	mode => 0644,
-	content => template("/vagrant/manifests/allow_ext.cnf"),
-	require => Package["mysql-server"],
-	notify => Service["mysql"],
+mysql::db { "loja":
+	schema => "loja_schema",
+	password => "lojasecret",
 }
-
-service { "mysql":
-	ensure => running,
-	enable => true,
-	hasstatus => true,
-	hasrestart => true,
-	require => Package["mysql-server"],
-}
-
-exec { "loja-schema":
-	unless => "mysql -uroot loja_schema",
-	command => "mysqladmin -uroot create loja_schema",
-	path => "/usr/bin/",
-	require => Service["mysql"],
-}
-
-exec { "remove-anonymous-user":
-	command => "mysql -uroot -e \"DELETE FROM mysql.user WHERE user=’’; FLUSH PRIVILEGES\"",
-	onlyif => "mysql -u’ ’",
-	path => "/usr/bin",
-	require => Service["mysql"],
-}
-
-exec { "loja-user":
-	unless => "mysql -uloja -plojasecret loja_schema",
-	command => "mysql -uroot -e \"GRANT ALL PRIVILEGES ON loja_schema.* TO 'loja'@'%' IDENTIFIED BY 'lojasecret';\"",
-	path => "/usr/bin/",
-	require => Exec["loja-schema"],
-}
-

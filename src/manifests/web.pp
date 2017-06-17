@@ -1,51 +1,58 @@
-exec { "apt-update":
-	command => "/usr/bin/apt-get update"
-}
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+#
+# web.pp - Web server configuation
+#
+#
+# Author: 	Rodrigo Alvares de Souza
+# 					rsouza01@gmail.com
+#
+#
+# History:
+# Version 0.1: 2017/06/?? (rsouza) - First version.
+# Version 0.1: 2017/06/17 (rsouza) - Refactoring
+#
+#
 
-package { ["mysql-client", "tomcat7"]:
-	ensure => installed,
-	require => Exec["apt-update"],
-}
+include mysql::client
+include tomcat::server
 
-file { "/var/lib/tomcat7/conf/.keystore":
-	owner => root,
-	group => tomcat7,
-	mode => 0640,
-	source => "/vagrant/manifests/.keystore",
-	require => Package["tomcat7"],
-	notify => Service["tomcat7"],
-}
+$keystore_file = "/etc/ssl/.keystore"
 
-file { "/var/lib/tomcat7/conf/server.xml":
-	owner => root,
-	group => tomcat7,
-	mode => 0644,
-	source => "/vagrant/manifests/server.xml",
-	require => Package["tomcat7"],
-	notify => Service["tomcat7"],
-}
-
-file { "/etc/default/tomcat7":
-	owner => root,
-	group => root,
-	mode => 0644,
-	source => "/vagrant/manifests/tomcat7",
-	require => Package["tomcat7"],
-	notify => Service["tomcat7"],
-}
-
-service { "tomcat7":
-	ensure => running,
-	enable => true,
-	hasstatus => true,
-	hasrestart => true,
-	require => Package["tomcat7"],
+$ssl_connector = {
+	"port" => 8443,
+	"protocol" => "HTTP/1.1",
+	"SSLEnabled" => true,
+	"maxThreads" => 150,
+	"scheme" => "https",
+	"secure" => "true",
+	"keystoreFile" => $keystore_file,
+	"keystorePass" => "secret",
+	"clientAuth" => false,
+	"sslProtocol" => "SSLv3",
 }
 
 $db_host = "192.168.33.10"
 $db_schema = "loja_schema"
 $db_user = "loja"
 $db_password = "lojasecret"
+
+
+exec { "apt-update":
+	command => "/usr/bin/apt-get update"
+}
+
+file { $keystore_file:
+	mode => 0644,
+	source => "/vagrant/manifests/.keystore",
+}
+
+class { "tomcat::server":
+	connectors => [$ssl_connector],
+	require => File[$keystore_file],
+}
+
 
 file { "/var/lib/tomcat7/conf/context.xml":
 	owner => root,
