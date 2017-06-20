@@ -13,12 +13,8 @@
 # Version 0.1: 2017/06/08 (rsouza) - First version.
 # Version 0.2: 2017/06/16 (rsouza) - Creating classes
 # Version 0.3: 2017/06/16 (rsouza) - Using modules
+# Version 0.4: 2017/06/19 (rsouza) - Minifying the file
 #
 #
 
-include mysql::server
-
-mysql::db { "loja":
-	schema => "loja_schema",
-	password => "lojasecret",
-}
+include loja_virtual::db
