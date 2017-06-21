@@ -8,11 +8,11 @@ class loja_virtual::db {
     
     mysql::db { 
         
-        $loja_virtual::params::db[’user’]:
+        $loja_virtual::params::db['user']:
     
-        schema => $loja_virtual::params::db[’schema’],
+        schema => $loja_virtual::params::db['schema'],
     
-        password => $loja_virtual::params::db[’password’],
+        password => $loja_virtual::params::db['password'],
 
     }
 }

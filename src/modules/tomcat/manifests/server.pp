@@ -14,7 +14,7 @@
 #
 #
 
-class tomcat::server($connectors = [], , $data_sources = []) {
+class tomcat::server($connectors = [], $data_sources = []) {
 
 	package { "tomcat7":
 		ensure => installed,
@@ -22,7 +22,7 @@ class tomcat::server($connectors = [], , $data_sources = []) {
 
 	file { "/etc/default/tomcat7":
 		owner => root,
-		group => tomcat7,
+		group => root,
 		mode => 0644,
     	source  => "puppet:///modules/tomcat/tomcat7",
 		require => Package["tomcat7"],

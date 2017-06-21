@@ -1,9 +1,9 @@
 class loja_virtual { 
 
-    class { ’apt’:
+    class { 'apt':
         always_apt_update => true,
     }
     
-    Class[’apt’] -> Package <| |>
+    Class['apt'] -> Package <| |>
 
 }
