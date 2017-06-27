@@ -6,6 +6,4 @@ class loja_virtual {
     
     Class['apt'] -> Package <| |>
 
-    apt::ppa { 'ppa:webupd8team/java':}
-
 }

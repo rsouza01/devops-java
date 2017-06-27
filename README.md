@@ -106,3 +106,16 @@ Small tutorial for DevOps and Java
 
 	export MAVEN_OPTS=-Xmx1024m
 
+* On Jenkins installation:
+
+	==> ci: err: /Stage[main]/Jenkins::Package/Package[jenkins]/ensure: change from purged to present failed: Execution of '/usr/bin/apt-get -q -y -o DPkg::Options::=--force-confold install jenkins' returned 100: Reading package lists...
+	==> ci: Building dependency tree...
+	==> ci: Reading state information...
+	==> ci: Some packages could not be installed. This may mean that you have
+	==> ci: requested an impossible situation or if you are using the unstable
+	==> ci: distribution that some required packages have not yet been created
+	==> ci: or been moved out of Incoming.
+	==> ci: The following information may help to resolve the situation:
+	==> ci: The following packages have unmet dependencies:
+	==> ci:  jenkins : Depends: default-jre-headless (>= 2:1.8) but it is not going to be 				 installed or java8-runtime-headless but it is not installable
+	==> ci: E: Unable to correct problems, you have held broken packages.
