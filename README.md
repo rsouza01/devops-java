@@ -53,6 +53,14 @@ Small tutorial for DevOps and Java
 
 	vagrant provision <SERVER>
 
+* Boxes (using [bento](https://app.vagrantup.com/bento) boxes)
+
+	vagrant list boxes
+
+	vagrant box add <BOX_NAME>
+
+	vagrant box remove <BOX_NAME>
+
 * SSH
 
 	vagrant ssh <SERVER>

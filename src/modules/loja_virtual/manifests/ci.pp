@@ -1,12 +1,9 @@
 class loja_virtual::ci {
 
-
-/** 
-    https://stackoverflow.com/questions/37066614/simple-puppet-module-for-java8-for-a-vm-built-with-vagrant
-*/
     include loja_virtual
 
-    package { ['git', 'maven2', 'rubygems']:
+/*
+    package { ['git', 'maven2', 'build-essential']:
         ensure => "installed",
     }
 
@@ -15,7 +12,7 @@ class loja_virtual::ci {
             'JAVA_ARGS' => { 'value' => '-Xmx256m' }
         },
     }
-
+*/
 
 /*
 
