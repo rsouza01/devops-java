@@ -22,8 +22,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.librarian_puppet.puppetfile_dir = "librarian"
 
 	# config.vm.box = "hashicorp/precise32"
-	config.vm.box = "puppetlabs/ubuntu-16.04-64-puppet"
-	config.vm.box_version = "1.0.0"
+	config.vm.box = "rsouza01/ubuntu_vagrant_box_16.04_LTS"
+	# config.vm.box_version = "1.0.0"
 
 	if Vagrant.has_plugin?("vagrant-librarian-puppet")
 		config.librarian_puppet.puppetfile_dir = "librarian"

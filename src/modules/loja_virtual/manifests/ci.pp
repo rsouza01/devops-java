@@ -2,19 +2,16 @@ class loja_virtual::ci {
 
     include loja_virtual
 
-/*
-    package { ['git', 'maven2', 'build-essential']:
+    package { ['git', 'maven2']:
         ensure => "installed",
     }
+
 
     class { 'jenkins':
         config_hash => {
             'JAVA_ARGS' => { 'value' => '-Xmx256m' }
         },
     }
-*/
-
-/*
 
     $plugins = [
         'ssh-credentials',
@@ -32,5 +29,5 @@ class loja_virtual::ci {
     ]
     
     jenkins::plugin { $plugins: }
-    */
+
 }
