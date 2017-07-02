@@ -23,7 +23,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 	# config.vm.box = "hashicorp/precise32"
 	config.vm.box = "rsouza01/ubuntu_vagrant_box_16.04_LTS"
-	# config.vm.box_version = "1.0.0"
+	# config.vm.box = "rsouza01/debian_vagrant_box_9.0.0-amd64"
+	# config.vm.box_version = "0.0.1"
 
 	if Vagrant.has_plugin?("vagrant-librarian-puppet")
 		config.librarian_puppet.puppetfile_dir = "librarian"
@@ -70,5 +71,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			puppet.manifest_file = "ci.pp"
 		end
 	end
+
 end
 

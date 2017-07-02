@@ -89,6 +89,7 @@ Small tutorial for DevOps and Java
 
 * [Nagios Dashboard](http://192.168.33.14/nagios3/)
 
+* [Jenkins](http://192.168.33.16:8080/) (Password: bf7f7527bfb84d32b1eb9873272804ea)
 
 ## [Book on Google Books](https://books.google.com.br/books?id=Cm2CCwAAQBAJ)
 
