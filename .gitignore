@@ -1,3 +1,14 @@
+.setup_aws
+.vagrant
+*.war
+*.deb
+librarian/.tmp
+librarian/.librarian
+librarian/modules
+librarian/Puppetfile.lock
+*.tgz
+
+
 # OS-specific
 .DS_Store
 
@@ -15,6 +26,10 @@ boxes/*
 
 
 *.war
+*.lock
+/src/librarian/.librarian/
+/src/librarian/modules/
+/src/librarian/.tmp/
 
 # Bundler/Rubygems
 *.gem

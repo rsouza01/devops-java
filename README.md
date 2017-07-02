@@ -37,12 +37,32 @@ Small tutorial for DevOps and Java
 ## COMMANDS
 
 * Start the VMs:
+
 	vagrant up
+	vagrant up <SERVER>
 
 * Shutdown the VMs:
+
 	vagrant halt
 
+* Destroy VMs:
+
+	vagrant destroy <SERVER>
+
+* Change VM's after running:
+
+	vagrant provision <SERVER>
+
+* Boxes (using [bento](https://app.vagrantup.com/bento) boxes)
+
+	vagrant list boxes
+
+	vagrant box add <BOX_NAME>
+
+	vagrant box remove <BOX_NAME>
+
 * SSH
+
 	vagrant ssh <SERVER>
 	vagrant ssh db
 	vagrant ssh web
@@ -69,6 +89,7 @@ Small tutorial for DevOps and Java
 
 * [Nagios Dashboard](http://192.168.33.14/nagios3/)
 
+* [Jenkins](http://192.168.33.16:8080/) (Password: bf7f7527bfb84d32b1eb9873272804ea)
 
 ## [Book on Google Books](https://books.google.com.br/books?id=Cm2CCwAAQBAJ)
 
@@ -94,3 +115,16 @@ Small tutorial for DevOps and Java
 
 	export MAVEN_OPTS=-Xmx1024m
 
+* On Jenkins installation:
+
+	==> ci: err: /Stage[main]/Jenkins::Package/Package[jenkins]/ensure: change from purged to present failed: Execution of '/usr/bin/apt-get -q -y -o DPkg::Options::=--force-confold install jenkins' returned 100: Reading package lists...
+	==> ci: Building dependency tree...
+	==> ci: Reading state information...
+	==> ci: Some packages could not be installed. This may mean that you have
+	==> ci: requested an impossible situation or if you are using the unstable
+	==> ci: distribution that some required packages have not yet been created
+	==> ci: or been moved out of Incoming.
+	==> ci: The following information may help to resolve the situation:
+	==> ci: The following packages have unmet dependencies:
+	==> ci:  jenkins : Depends: default-jre-headless (>= 2:1.8) but it is not going to be 				 installed or java8-runtime-headless but it is not installable
+	==> ci: E: Unable to correct problems, you have held broken packages.
