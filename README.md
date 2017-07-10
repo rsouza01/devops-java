@@ -89,7 +89,41 @@ Small tutorial for DevOps and Java
 
 * [Nagios Dashboard](http://192.168.33.14/nagios3/)
 
-* [Jenkins](http://192.168.33.16:8080/) (Password: bf7f7527bfb84d32b1eb9873272804ea)
+* [Jenkins](http://192.168.33.16:8080/)
+	
+Getting the admin password:
+
+vagrant ssh ci -- 'sudo cp /var/lib/jenkins/secrets/initialAdminPassword /vagrant'
+
+
+* [Jenkins] - Plugins dependencies
+
+	Maven Integration plugin v2.16
+		junit v1.6 is missing. To fix, install v1.6 or later.
+		Jenkins Mailer Plugin v1.20 failed to load. Fix this plugin first.
+	Jenkins Git plugin v3.3.1
+		workflow-scm-step v1.14.2 is missing. To fix, install v1.14.2 or later.
+		Credentials Plugin v2.1.14 failed to load. Fix this plugin first.
+	Jenkins Parameterized Trigger plugin v2.34
+		conditional-buildstep v1.3.1 is missing. To fix, install v1.3.1 or later.
+		matrix-project v1.6 is missing. To fix, install v1.6 or later.
+	Jenkins Workspace Cleanup Plugin v0.33
+		workflow-durable-task-step v2.4 is missing. To fix, install v2.4 or later.
+		matrix-project v1.7.1 is missing. To fix, install v1.7.1 or later.
+		resource-disposer v0.3 is missing. To fix, install v0.3 or later.
+		structs v1.5 is missing. To fix, install v1.5 or later.
+	Credentials Plugin v2.1.14
+		structs v1.7 is missing. To fix, install v1.7 or later.
+	SSH Credentials Plugin v1.13
+		Credentials Plugin v2.1.14 failed to load. Fix this plugin first.
+	Jenkins Git client plugin v2.4.6
+		Credentials Plugin v2.1.14 failed to load. Fix this plugin first.
+	Jenkins Mailer Plugin v1.20
+		display-url-api v1.0 is missing. To fix, install v1.0 or later.
+	Copy Artifact Plugin v1.38.1
+		matrix-project v1.3 is missing. To fix, install v1.3 or later.
+
+
 
 ## [Book on Google Books](https://books.google.com.br/books?id=Cm2CCwAAQBAJ)
 

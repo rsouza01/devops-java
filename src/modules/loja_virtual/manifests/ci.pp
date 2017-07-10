@@ -15,7 +15,6 @@ class loja_virtual::ci {
 
     $plugins = [
         'ssh-credentials',
-        'credentials',
         'scm-api',
         'git-client',
         'git',
@@ -25,10 +24,27 @@ class loja_virtual::ci {
         'greenballs',
         'ws-cleanup',
         'parameterized-trigger',
-        'copyartifact'
+        'copyartifact',
+		'junit',
+        'workflow-scm-step',
+		'conditional-buildstep',
+		'workflow-durable-task-step',
+		'resource-disposer',
+		'structs',
+		'display-url-api',
+		'matrix-project',
+        'script-security',
+        'workflow-api',
+        'workflow-step-api',
+        'workflow-support',
+        'durable-task',
+        'run-condition',
+        'token-macro'
     ]
     
     jenkins::plugin { $plugins: }
+
+    /*
 
     file { '/var/lib/jenkins/hudson.tasks.Maven.xml':
         mode => 0644,
@@ -64,5 +80,6 @@ class loja_virtual::ci {
         require => File[$job_structure],
         notify => Service['jenkins'],
     }
+    */
 
 }
