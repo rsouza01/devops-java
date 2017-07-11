@@ -2,7 +2,7 @@ class loja_virtual::ci {
 
     include loja_virtual
 
-    package { ['git', 'maven']:
+    package { ['mc', 'git', 'maven']:
         ensure => "installed",
     }
 
@@ -44,8 +44,6 @@ class loja_virtual::ci {
     
     jenkins::plugin { $plugins: }
 
-    /*
-
     file { '/var/lib/jenkins/hudson.tasks.Maven.xml':
         mode => 0644,
         owner => 'jenkins',
@@ -55,15 +53,15 @@ class loja_virtual::ci {
         notify => Service['jenkins'],
     }
 
-    $job_structure = [
-        '/var/lib/jenkins/jobs/',
-        '/var/lib/jenkins/jobs/loja-virtual-devops'
-    ]
-
     $git_repository = 'https://github.com/rsouza01/loja-virtual-devops'
     $git_poll_interval = '* * * * *'
     $maven_goal = 'install'
     $archive_artifacts = 'combined/target/*.war'
+
+    $job_structure = [
+        '/var/lib/jenkins/jobs/loja-virtual-devops'
+    ]
+
 
     file { $job_structure:
         ensure => 'directory',
@@ -72,14 +70,13 @@ class loja_virtual::ci {
         require => Class['jenkins::package'],
     }
 
-    file { "${job_structure[1]}/config.xml":
+    file { '/var/lib/jenkins/jobs/loja-virtual-devops/config.xml':
         mode => 0644,
         owner => 'jenkins',
         group => 'jenkins',
         content => template('loja_virtual/config.xml'),
-        require => File[$job_structure],
         notify => Service['jenkins'],
+        require => File[$job_structure]
     }
-    */
 
 }
