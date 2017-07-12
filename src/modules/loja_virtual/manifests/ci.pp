@@ -41,7 +41,7 @@ class loja_virtual::ci {
         'run-condition',
         'token-macro'
     ]
-    
+
     jenkins::plugin { $plugins: }
 
     file { '/var/lib/jenkins/hudson.tasks.Maven.xml':
@@ -53,13 +53,15 @@ class loja_virtual::ci {
         notify => Service['jenkins'],
     }
 
-    $git_repository = 'https://github.com/rsouza01/loja-virtual-devops'
+    $git_repository = 'https://github.com/rsouza01/devops-java-app'
     $git_poll_interval = '* * * * *'
-    $maven_goal = 'install'
+    $maven_goal = 'package'
     $archive_artifacts = 'combined/target/*.war'
+    $root_POM = 'src/DevopsJavaApp/pom.xml'
+
 
     $job_structure = [
-        '/var/lib/jenkins/jobs/loja-virtual-devops'
+        '/var/lib/jenkins/jobs/devops-java-app'
     ]
 
 
@@ -70,7 +72,7 @@ class loja_virtual::ci {
         require => Class['jenkins::package'],
     }
 
-    file { '/var/lib/jenkins/jobs/loja-virtual-devops/config.xml':
+    file { '/var/lib/jenkins/jobs/devops-java-app/config.xml':
         mode => 0644,
         owner => 'jenkins',
         group => 'jenkins',
