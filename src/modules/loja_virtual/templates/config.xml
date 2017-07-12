@@ -32,9 +32,10 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <rootModule>
-    <groupId>br.com.devopsnapratica</groupId>
-    <artifactId>lojavirtual-website</artifactId>
+    <groupId>com.rsouza01</groupId>
+    <artifactId>devops-java-app</artifactId>
   </rootModule>
+  <rootPOM><%= @root_POM %></rootPOM>
   <goals><%= @maven_goal %></goals>
   <aggregatorStyleBuild>true</aggregatorStyleBuild>
   <incrementalBuild>false</incrementalBuild>

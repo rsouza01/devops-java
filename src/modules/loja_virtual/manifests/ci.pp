@@ -2,7 +2,7 @@ class loja_virtual::ci {
 
     include loja_virtual
 
-    package { ['git', 'maven']:
+    package { ['mc', 'git', 'maven']:
         ensure => "installed",
     }
 
@@ -15,7 +15,6 @@ class loja_virtual::ci {
 
     $plugins = [
         'ssh-credentials',
-        'credentials',
         'scm-api',
         'git-client',
         'git',
@@ -25,9 +24,24 @@ class loja_virtual::ci {
         'greenballs',
         'ws-cleanup',
         'parameterized-trigger',
-        'copyartifact'
+        'copyartifact',
+		'junit',
+        'workflow-scm-step',
+		'conditional-buildstep',
+		'workflow-durable-task-step',
+		'resource-disposer',
+		'structs',
+		'display-url-api',
+		'matrix-project',
+        'script-security',
+        'workflow-api',
+        'workflow-step-api',
+        'workflow-support',
+        'durable-task',
+        'run-condition',
+        'token-macro'
     ]
-    
+
     jenkins::plugin { $plugins: }
 
     file { '/var/lib/jenkins/hudson.tasks.Maven.xml':
@@ -39,15 +53,17 @@ class loja_virtual::ci {
         notify => Service['jenkins'],
     }
 
+    $git_repository = 'https://github.com/rsouza01/devops-java-app'
+    $git_poll_interval = '* * * * *'
+    $maven_goal = 'package'
+    $archive_artifacts = 'combined/target/*.war'
+    $root_POM = 'src/DevopsJavaApp/pom.xml'
+
+
     $job_structure = [
-        '/var/lib/jenkins/jobs/',
-        '/var/lib/jenkins/jobs/loja-virtual-devops'
+        '/var/lib/jenkins/jobs/devops-java-app'
     ]
 
-    $git_repository = 'https://github.com/rsouza01/loja-virtual-devops'
-    $git_poll_interval = '* * * * *'
-    $maven_goal = 'install'
-    $archive_artifacts = 'combined/target/*.war'
 
     file { $job_structure:
         ensure => 'directory',
@@ -56,13 +72,13 @@ class loja_virtual::ci {
         require => Class['jenkins::package'],
     }
 
-    file { "${job_structure[1]}/config.xml":
+    file { '/var/lib/jenkins/jobs/devops-java-app/config.xml':
         mode => 0644,
         owner => 'jenkins',
         group => 'jenkins',
         content => template('loja_virtual/config.xml'),
-        require => File[$job_structure],
         notify => Service['jenkins'],
+        require => File[$job_structure]
     }
 
 }
