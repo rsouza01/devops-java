@@ -56,14 +56,15 @@ class loja_virtual::ci {
     $git_repository = 'https://github.com/rsouza01/devops-java-app'
     $git_poll_interval = '* * * * *'
     $maven_goal = 'package'
-    $archive_artifacts = 'combined/target/*.war'
+    $archive_artifacts = 'src/DevopsJavaApp/target/*.war'
     $root_POM = 'src/DevopsJavaApp/pom.xml'
-
 
     $job_structure = [
         '/var/lib/jenkins/jobs/devops-java-app'
     ]
 
+    $repo_dir = '/var/lib/apt/repo'
+    $repo_name = 'devopspkgs'
 
     file { $job_structure:
         ensure => 'directory',
@@ -81,4 +82,8 @@ class loja_virtual::ci {
         require => File[$job_structure]
     }
 
+    class { 'loja_virtual::repo':
+        basedir => $repo_dir,
+        name => $repo_name,
+    }
 }
